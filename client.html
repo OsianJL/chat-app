@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socket.IO Chat Client</title>
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+  <h1>Chat Client</h1>
+  <script>
+    // Connect to the Socket.IO server
+    const socket = io('http://localhost:3000');
+
+    socket.on('connect', () => {
+      console.log('Connected as', socket.id);
+      // Send a test message once connected
+      socket.emit('message', { text: 'Hello from client!' });
+    });
+
+    socket.on('message', (data) => {
+      console.log('New message:', data);
+    });
+  </script>
+</body>
+</html>

@@ -1,10 +1,20 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ChatGateway } from './chat/chat.gateway';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5433,
+      username: 'osidev',
+      password: 'osidev25',
+      database: 'chatdb',
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
+    ChatGateway,
+  ],
 })
 export class AppModule {}
