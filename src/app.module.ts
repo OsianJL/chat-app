@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ChatGateway } from './chat/chat.gateway';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { ChatGateway } from './chat/chat.gateway';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    ChatGateway,
+    ChatModule,
   ],
 })
 export class AppModule {}
